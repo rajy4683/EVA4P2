@@ -3,7 +3,7 @@
 ## Description
 
  This repo contains the source code for deploying PyTorch based pre-trained [MobileNetV2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/)  on AWS Lambda.
- The deployed model can be used for inferencing of images belonging to the Imagenet classes
+ The deployed model can be used for inferencing of images belonging to the [Imagenet classes](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)
  
 ## File-wise Details
 
