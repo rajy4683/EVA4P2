@@ -18,3 +18,8 @@
 ![Input Image for the query](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/LABD.jpg)
 
 ![Output of Inferencing from deployed model using Insomnia](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/Output.JPG)
+
+## References:
+
+- EVA4 Course content
+- This awesome [Medium Link](https://towardsdatascience.com/scaling-machine-learning-from-zero-to-hero-d63796442526)
