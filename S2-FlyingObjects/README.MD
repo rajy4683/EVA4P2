@@ -2,19 +2,19 @@
 
 ## TOC
 
-1. [Description](#description)
+1. [Overview](#overview)
 2. [Dataset EDA](#dataset-eda)
 3. [Data Augmentation](#data-augmentation)
 4. [Model and Loss functions](#model-and-loss-functions)
 5. [Training Strategy](#training-strategy)
-6. [Samples from Inferencing](#sample-from-inferencing)
+6. [Samples from Inferencing](#samples-from-inferencing)
     1. [Confusion Matrix](#confusion-matrix)
-    1. [Misclassified Image Gallery](#misclassified-image-galler)
+    2. [Misclassified Image Gallery](#misclassified-image-gallery)
 7. [Accessing Lambda](#accessing-lambda)
 8. [Repo Links](#repo-links)
 9. [References](#references)
 
-## Description
+## Overview
 
 "Flying Objects" is a generated dataset consisting of the images of the following classes:
 
@@ -113,17 +113,17 @@ curl -X POST \
   -H 'content-type: multipart/form-data' \
   -F file1=@'<your file name>' `
 
-Sample Output:
+### Sample Output
 
 `{"file": "file1", "predicted": "That seems to be Flying Birds"}`
 
-## Repo Links
+## Code Links
 
-- [handler.py](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/handler.py): Contains the definition of the lambda function(classify_image) that will invoked on the AWS LAMBDA
-- [serverless.yml](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/serverless.yml): Deployment file used by the "serverless" framework to create the end-to-end deployment.
-- [package.json](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/package.json): contains the dependency file used during 'npm run deploy' phase.
-- [requirements.txt](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/requirements.txt): contains all the external packages that need to be deployed for 'handler.py'
-- [imagenet_labels.py](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/imagenet_labels.py): contains an Unordered dict of Imagenet class to name mappings
+- ["Flying Objects" EDA Notebook](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_DataAnalysis.ipynb)
+- [Model and Deployment Notebook](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_PreFinal.ipynb)
+- [Training Scripts](https://github.com/rajy4683/RekogNizer/blob/master/train_eva4_s2.py)
+- [Model definition](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/basemodelclass.py#L687)
+- [Training Results](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
 
 ## References
 
