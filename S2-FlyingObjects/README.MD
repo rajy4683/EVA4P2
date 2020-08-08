@@ -26,7 +26,7 @@ Basic data cleaning methods such as removal of zero/invalid sized files and exte
 Further, based on K-Means over both image size and image height/width, the dataset was further pruned to have ~21443 samples.
 Final data was split into training and test samples.
 
-## Data Augmentation:
+## Data Augmentation
 
 Following augmentation schemes were used from [Albumentations library](https://github.com/albumentations-team/albumentations):
 
@@ -35,14 +35,15 @@ Following augmentation schemes were used from [Albumentations library](https://g
 
 Augmentation Functions are present in **[this file](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/train_eva4_s2.py#L74)**
 
-## Model and Loss functions:
+## Model and Loss functions
 
 Model definition can be found **[here](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/basemodelclass.py#L687)**
+
 Pre-trained **MobileNetV2** from torch.hub was used as the backbone.
 The original classifier is trained for ImageNet classes, so the classifier layer was replaced with custom classifier for 4 classes with log-softmax activation.
 [nn.NLLLoss](https://pytorch.org/docs/stable/generated/torch.nn.NLLLoss.html) was used as Loss function
 
-## Training Strategy:
+## Training Strategy
 
 The training and results are present in **[this notebook](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_PreFinal.ipynb)**
 The notebook invokes **[this script](https://github.com/rajy4683/RekogNizer/blob/master/train_eva4_s2.py)** with various hyperparameters including number of layers to be unfrozen 
@@ -50,12 +51,26 @@ The notebook invokes **[this script](https://github.com/rajy4683/RekogNizer/blob
 1. Overall strategy was to use transfer learning with fine-tuning.
 2. Depending upon the accuracy reached, lower layers were unfrozen with Learning Rate range test. Please refer the schematic below 
 ![Layer Unfreezing](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/ModelFlow.JPG)
-1. Final accuracy reached on the test set was ~89.85%
+3. Final accuracy reached on the test set was ~89.85%
 
 Training results are as below:
 ![Accuracy Results](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Loss.JPG)
 
 Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
+
+## Samples from Inferencing
+
+Below is the class wise Accuracy and Confusion Matrix:
+![CCF](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/CCF.JPG)
+
+## Misclassified Image Gallery
+
+As seen in the Confusion Matrix also, the model have much lower accuracy on Small QuadCopters vs Large QuadCopters. This could be because of overlapping features between such images.
+
+![Misclassified Images](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/LABD.jpg)
+
+![Output of Inferencing from deployed model using Insomnia](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/Output.JPG)
+
 
 ## File-wise Details
 
@@ -65,11 +80,7 @@ Full training results and hyperparameters can be viewed at this [W&B link](https
 - [requirements.txt](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/requirements.txt): contains all the external packages that need to be deployed for 'handler.py'
 - [imagenet_labels.py](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/imagenet_labels.py): contains an Unordered dict of Imagenet class to name mappings
 
-## Samples from Inferencing
 
-![Input Image for the query](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/LABD.jpg)
-
-![Output of Inferencing from deployed model using Insomnia](https://github.com/rajy4683/EVA4P2/blob/master/S1-BasicDeployment/Output.JPG)
 
 ## References:
 
