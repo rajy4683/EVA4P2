@@ -38,17 +38,24 @@ Augmentation Functions are present in **[this file](https://github.com/rajy4683/
 ## Model and Loss functions:
 
 Model definition can be found **[here](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/basemodelclass.py#L687)**
-Pre-trained MobileNetV2 from torch.hub was used as the backbone. 
+Pre-trained **MobileNetV2** from torch.hub was used as the backbone.
 The original classifier is trained for ImageNet classes, so the classifier layer was replaced with custom classifier for 4 classes with log-softmax activation.
 [nn.NLLLoss](https://pytorch.org/docs/stable/generated/torch.nn.NLLLoss.html) was used as Loss function
 
 ## Training Strategy:
 
-1. Overall strategy was to use transfer learning with fine-tuning. 
+The training and results are present in **[this notebook](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_PreFinal.ipynb)**
+The notebook invokes **[this script](https://github.com/rajy4683/RekogNizer/blob/master/train_eva4_s2.py)** with various hyperparameters including number of layers to be unfrozen 
+
+1. Overall strategy was to use transfer learning with fine-tuning.
 2. Depending upon the accuracy reached, lower layers were unfrozen with Learning Rate range test. Please refer the schematic below 
 ![Layer Unfreezing](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/ModelFlow.JPG)
 1. Final accuracy reached on the test set was ~89.85%
 
+Training results are as below:
+
+
+Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
 
 ## File-wise Details
 
