@@ -1,4 +1,4 @@
-# Assignment-2: Deploying a model on AWS Lambda
+# Assignment-2: Detecting Flying Object classes
 
 ## Description
 
@@ -53,7 +53,7 @@ The notebook invokes **[this script](https://github.com/rajy4683/RekogNizer/blob
 1. Final accuracy reached on the test set was ~89.85%
 
 Training results are as below:
-
+![Accuracy Results](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Loss.JPG)
 
 Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
 
