@@ -16,7 +16,7 @@
 
 ## Overview
 
-"Flying Objects" is a generated dataset consisting of the images of the following classes:
+"Flying Objects" is a dataset consisting of images of the following classes:
 
  1. Large QuadCopters
  2. Small QuadCopters
