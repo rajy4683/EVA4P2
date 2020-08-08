@@ -71,7 +71,8 @@ The notebook invokes **[this script](https://github.com/rajy4683/RekogNizer/blob
 ![Layer Unfreezing](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/ModelFlow.JPG)
 3. Final accuracy reached on the test set was ~89.85%
 
-Training results are as below:
+Training results are as below
+
 ![Accuracy Results](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Loss.JPG)
 
 Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
@@ -80,7 +81,8 @@ Full training results and hyperparameters can be viewed at this [W&B link](https
 
 ### Confusion Matrix
 
-Below is the class wise Accuracy and Confusion Matrix:
+Below is the class wise Accuracy and Confusion Matrix
+
 ![CCF](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/CCF.JPG)
 
 ### Misclassified Image Gallery
