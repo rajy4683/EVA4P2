@@ -91,7 +91,10 @@ As seen in the Confusion Matrix also, the model have much lower accuracy on Smal
 
 This could be because of overlapping features between such classes and lesser overall images for Small Quadcopters.
 
-![Misclassified Images](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Misclassified.png)
+![Flying Birds](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Misclassified.png)
+![Large QuadCopters](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/lq.png)
+![Small QuadCopters](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/SQ.png)
+![Winged Drones](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/QD.png)
 
 ## Accessing Lambda
 
