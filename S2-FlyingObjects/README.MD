@@ -4,7 +4,7 @@
 
 1. [Overview](#overview)
 2. [Dataset EDA](#dataset-eda)
-3. [Data Augmentation](#data-augmentation)
+3. [Data Augmentation and Resizing](#data-augmentation-and-resizing)
 4. [Model and Loss functions](#model-and-loss-functions)
 5. [Training Strategy](#training-strategy)
 6. [Samples from Inferencing](#samples-from-inferencing)
@@ -46,7 +46,7 @@ Basic data cleaning methods such as removal of zero/invalid sized files and exte
 Further, based on K-Means over both image size and image height/width, the dataset was further pruned to have ~21443 samples.
 Final data was split into training and test samples.
 
-## Data Augmentation
+## Data Augmentation and Resizing
 
 Augmentation Functions are present in **[this file](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/train_eva4_s2.py#L74)**
 
