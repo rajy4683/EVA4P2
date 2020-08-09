@@ -11,6 +11,8 @@
     1. [Confusion Matrix](#confusion-matrix)
     2. [Misclassified Image Gallery](#misclassified-image-gallery)
 7. [Accessing Lambda](#accessing-lambda)
+    1. [Curl Command](#curl-command)
+    2. [Sample Output](#sample-output)
 8. [Repo Links](#repo-links)
 9. [References](#references)
 
@@ -101,7 +103,7 @@ The model trained above has been pushed to S3 and can be downloaded **[here](htt
 
 Please refer to this [Medium Link](https://towardsdatascience.com/scaling-machine-learning-from-zero-to-hero-d63796442526) awesome guide for further details
 
-For quick access using curl:
+### Curl command:
 
 `
 curl -X POST \
