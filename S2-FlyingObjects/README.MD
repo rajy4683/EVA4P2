@@ -48,12 +48,13 @@ Final data was split into training and test samples.
 
 ## Data Augmentation
 
+Augmentation Functions are present in **[this file](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/train_eva4_s2.py#L74)**
+
 Following augmentation schemes were used from [Albumentations library](https://github.com/albumentations-team/albumentations):
 
 1. **For Training**: Resize(512x512)-->RandomResizedCrop(224x224)-->CutOut-->Fliplr--->Rotate-->Normalize-->ToTensor
-1. **For Testing**: Resize(224x224)-->Normalize-->ToTensor
+2. **For Testing**: Resize(224x224)-->Normalize-->ToTensor
 
-Augmentation Functions are present in **[this file](https://github.com/rajy4683/RekogNizer/blob/5ade03bd09bf94e43318e3b8af6594478e2b56c3/train_eva4_s2.py#L74)**
 
 ## Model and Loss functions
 
