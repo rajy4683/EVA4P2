@@ -35,7 +35,7 @@ Please refer to [this section](https://github.com/rajy4683/EVA4P2/tree/master/S2
 
 ## Dataset EDA
 
-Please refer this notebook for [Detailed EDA](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_DataAnalysis.ipynb)
+Please refer this notebook for **[Detailed EDA](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/EVA4P2_S2_DataAnalysis.ipynb)**
 
 1. **Images per class**
 ![Images per Class](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/ClassWiseFileCount.jpg)
