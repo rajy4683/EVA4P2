@@ -75,7 +75,7 @@ Training results are as below
 
 ![Accuracy Results](https://github.com/rajy4683/EVA4P2/blob/master/S2-FlyingObjects/S2_EDA_Imgs/Loss.JPG)
 
-Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/nzn1q8x5)
+Full training results and hyperparameters can be viewed at this [W&B link](https://app.wandb.ai/rajy4683/news5/runs/1mfa1c17)
 
 ## Samples from Inferencing
 
