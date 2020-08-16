@@ -5,8 +5,9 @@
 1. [Overview](#overview)
 2. [Face Alignment](#face-alignment)
 3. [Face Swap](#face-swap)
-4. [Works Page](#works-page)
-5. [References](#references)
+    1. Preview(#preview)
+1. [Works Page](#works-page)
+1. [References](#references)
 
 ## Overview
 
@@ -28,9 +29,9 @@ Please refer this notebook for **[Face Swap](https://github.com/rajy4683/EVA4P2/
 
 Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S3-FaceAlignSwap/s3-faceswap)**
 
-### Preview:
+### Preview
 
-
+![Sample Images](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/SwapResults.png)
 
 ## Works Page
 
