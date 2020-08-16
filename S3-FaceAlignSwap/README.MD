@@ -20,9 +20,17 @@ Learning outcome of this assignment was to better understand OpenCV and Dlib fra
 
 Please refer this notebook for **[Face Alignment](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/P2S3_FaceAlignment.ipynb)**
 
+Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S3-FaceAlignSwap/s3-facealign)**
+
 ## Face Swap
 
 Please refer this notebook for **[Face Swap](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/P2S3_FaceSwap.ipynb)**
+
+Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S3-FaceAlignSwap/s3-faceswap)**
+
+### Preview:
+
+
 
 ## Works Page
 
