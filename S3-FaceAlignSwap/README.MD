@@ -39,4 +39,3 @@ https://tinyurl.com/yxexowph (Redirects to above site)
 - EVA4 Course content
 - This awesome [Medium Link](https://towardsdatascience.com/scaling-machine-learning-from-zero-to-hero-d63796442526)
 - LearnOpenCV repos
-
