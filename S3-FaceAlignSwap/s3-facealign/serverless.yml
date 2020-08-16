@@ -1,0 +1,82 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: s3-facealignment
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    MODEL_BUCKET_NAME: rekog-eva4s1
+    PREDICTOR_PATH: 'shape_predictor_68_face_landmarks.dat'
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+       - s3:getObject
+     Resource: "arn:aws:s3:::rekog-eva4s1/*"
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: "./cache"
+
+
+# you can add packaging information here
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+functions:
+  classify_image:
+    handler: handler.classify_image
+    memory: 3008
+    timeout: 60
+    events:
+     - http:
+         path: classify
+         method: post
+         cors: true
+plugins:
+  - serverless-python-requirements

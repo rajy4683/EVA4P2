@@ -1,0 +1,6 @@
+Pillow
+opencv-python-headless
+opencv-contrib-python-headless
+dlib
+numpy
+requests_toolbelt
