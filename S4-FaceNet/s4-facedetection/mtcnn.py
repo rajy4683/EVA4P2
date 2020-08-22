@@ -131,7 +131,7 @@ class ONet(nn.Module):
 
         if pretrained:
             #state_dict_path = os.path.join(os.path.dirname(__file__), '../data/onet.pt')
-            state_dict_path = os.path.join('/tmp', 'data/onet.pt')
+            state_dict_path = os.path.join('/tmp', 'onet.pt')
             state_dict = torch.load(state_dict_path)
             self.load_state_dict(state_dict)
 

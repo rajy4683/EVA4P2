@@ -13,6 +13,7 @@ import os
 import io 
 import json 
 import base64 
+import numpy as np
 from requests_toolbelt.multipart import decoder
 
 #from .models.inception_resnet_v1 import InceptionResnetV1
@@ -23,6 +24,9 @@ print( "Import End....")
 
 S3_BUCKET = os.environ['S3_BUCKET'] if 'S3_BUCKET' in os.environ else 'rekog-eva4s1'
 MODEL_PATH = os.environ['MODEL_PATH'] if 'MODEL_PATH' in os.environ else 'resnet_custom_facedetect_2.pt'
+PNET_PATH = os.environ['PNET_PATH'] if 'PNET_PATH' in os.environ else 'pnet.pt'
+RNET_PATH = os.environ['RNET_PATH'] if 'RNET_PATH' in os.environ else 'rnet.pt'
+ONET_PATH = os.environ['ONET_PATH'] if 'ONET_PATH' in os.environ else 'onet.pt'
 
 s3 = boto3.client('s3')
 try: 
@@ -33,6 +37,28 @@ try:
         print("Loading Model")
         model = torch.jit.load(bytestream) 
         model.eval()
+
+        obj = s3.get_object(Bucket=S3_BUCKET, Key=PNET_PATH)
+        print( "Creating Bytestream for PNET_PATH")
+        bytestream = io.BytesIO(obj['Body'].read() )
+        temporarylocation="/tmp/pnet.pt"
+        with open(temporarylocation,'wb') as out: ## Open temporary file as bytes
+                out.write(bytestream.read())
+
+        obj = s3.get_object(Bucket=S3_BUCKET, Key=RNET_PATH)
+        print( "Creating Bytestream for RNET_PATH")
+        bytestream = io.BytesIO(obj['Body'].read() )
+        temporarylocation="/tmp/rnet.pt"
+        with open(temporarylocation,'wb') as out: ## Open temporary file as bytes
+                out.write(bytestream.read())
+
+        obj = s3.get_object(Bucket=S3_BUCKET, Key=ONET_PATH)
+        print( "Creating Bytestream for ONET_PATH")
+        bytestream = io.BytesIO(obj['Body'].read() )
+        temporarylocation="/tmp/onet.pt"
+        with open(temporarylocation,'wb') as out: ## Open temporary file as bytes
+                out.write(bytestream.read())
+
         mtcnn = MTCNN(
                 image_size=160, margin=0, min_face_size=20,
                 thresholds=[0.6, 0.7, 0.7], factor=0.709, post_process=True,
@@ -45,7 +71,7 @@ except Exception as e:
 
 #class_names=['Large QuadCopters', 'Flying Birds', 'Winged Drones',
 #               'Small QuadCopters']
-class_name=['AR_Rehman', 'David_Goggins', 'Gustav_Mahler', 'Janis_Joplin', 'Jim_Morrison', 'Rich_Froning', 'Tia_Clair_Toomey']
+class_names=['AR_Rehman', 'David_Goggins', 'Gustav_Mahler', 'Janis_Joplin', 'Jim_Morrison', 'Rich_Froning', 'Tia_Clair_Toomey']
 
 def transform_image( image_bytes ) :
     try:
@@ -69,7 +95,7 @@ def transform_image( image_bytes ) :
 
 def extract_align_faces(image_bytes):
     img = np.array(Image.open(io.BytesIO(image_bytes)).convert('RGB'))
-    face_tensor,probs = mtcnn(mtcnn(img, return_prob=True))
+    face_tensor,probs =mtcnn(img, return_prob=True)
     return face_tensor,probs
 
 def get_prediction( tensor ) : 
@@ -95,7 +121,7 @@ def classify_image(event, context) :
         print( 'BODY LOADED' )
         picture = decoder.MultipartDecoder(body, content_type_header).parts[0]
         face_tensor,probs = extract_align_faces(image_bytes = picture.content)
-        prediction =  get_prediction(image_bytes = picture.content) 
+        prediction =  get_prediction(face_tensor) 
         print("Get Prediction returned:",prediction, type(prediction), class_names[int(prediction)])
         predicted_val = class_names[int(prediction)]
         predicted_str = f'{predicted_val}'

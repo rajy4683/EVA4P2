@@ -308,11 +308,13 @@ def imresample(img, sz):
 
 def crop_resize(img, box, image_size):
     if isinstance(img, np.ndarray):
-        out = cv2.resize(
-            img[box[1]:box[3], box[0]:box[2]],
-            (image_size, image_size),
-            interpolation=cv2.INTER_AREA
-        ).copy()
+        #out = cv2.resize
+        #    img[box[1]:box[3], box[0]:box[2]],
+        #    (image_size, image_size),
+        #    interpolation=cv2.INTER_AREA
+        #).copy()
+        img1 = Image.fromarray(img)
+        out = img1.crop(box).copy().resize((image_size, image_size), Image.BILINEAR)
     else:
         out = img.crop(box).copy().resize((image_size, image_size), Image.BILINEAR)
     return out
