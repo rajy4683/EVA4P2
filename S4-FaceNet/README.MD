@@ -34,4 +34,4 @@ https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com
 
 - EVA4 Course content
 - [Finetune a facial recognition classifier](https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79)
-- 
+- [Tim Esler's Awesome FaceNet Repo](https://github.com/timesler/facenet-pytorch)
