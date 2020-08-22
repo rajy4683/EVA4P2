@@ -16,23 +16,16 @@ In this assignment, the objective is to create an face recognition pipeline on c
 2. Extract and Align 160px images from the dataset and convert it for Face Recognition
 3. Fine-tune InceptionResNetv1 pre-trained on VggFace2 for 
 
-## Face Alignment
+## Face Recognition Pipeline
 
-Please refer this notebook for **[Face Alignment](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/P2S3_FaceAlignment.ipynb)**
+Please refer this notebook for **[Face Recognition Pipeline](https://github.com/rajy4683/EVA4P2/blob/master/S4-FaceNet/P2S4_FaceNet.ipynb)**
 
-Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S3-FaceAlignSwap/s3-facealign)**
+Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S4-FaceNet/s4-facedetection)**
 
-## Face Swap
+### Loss Graph
 
-Please refer this notebook for **[Face Swap](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/P2S3_FaceSwap.ipynb)**
 
-Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S3-FaceAlignSwap/s3-faceswap)**
-
-### Preview
-
-![Sample Images](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/SwapResults.png)
-
-## Works Page
+## Deployment
 
 Please visit the following link to view/test the deployed models:
 https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com
