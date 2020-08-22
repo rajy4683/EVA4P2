@@ -1,0 +1,14 @@
+{
+  "name": "s4-facedetection",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "scripts": {
+    "deploy": "serverless deploy"
+  },
+  "devDependencies": {
+    "serverless": "^1.67.@",
+    "serverless-offline": "^6.5.0",
+    "serverless-python-requirements": "^5.1.0"
+  }
+}
