@@ -15,23 +15,24 @@ Using Mediapipe's [Hand Tracking Pipeline](https://ai.googleblog.com/2019/08/on-
 At its core, Mediapipe uses a [TFlite Hand Landmark model](https://github.com/google/mediapipe/tree/master/mediapipe/models/hand_landmark.tflite) that can used independently.
 
 ### Schematic
+
 ![Simple Flow diagram ](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/OpenPose.JPG)
 
 ## Open Pose with MediaPipe
 
 For end-to-end ML Pipeline MediaPipe's Hand Tracking was used with 2 modifications:
 
-1. Hand Gesture and movement mapping from [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)    
+1. Hand Gesture and movement mapping from [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)
     Ulrich's Hand Gesture Recognition, uses HandLandMarkSubgraph to obtain normalized Landmarks and then based on "open state" i.e whether finger tip is above MCG decides overall gesture.
 
-2. A simple ActionTrigger node that publishes to a local MQTT channel
-    This module uses the string of the selected Gesture and pushes it over an mqtt topic to a Mosquitto broker listening on localhost. 
+2. A simple ActionTrigger node that publishes to a local MQTT channel. Code can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/action-triggers/action-triggers.cc)
+    This module uses the string of the selected Gesture and pushes it over an mqtt topic to a Mosquitto broker listening on localhost.
 
 ## Arduino Interfacing
 
 1. Arduino UNO was used to drive a 1M(144 WS2812 LED Strip)
-2. Tweaked FirmataExpress with minor tweaks to handle custom Sysex codes was used. Tweaked Sketch can be found [here]()
-3. [Pymata4](https://mryslab.github.io/pymata4/) was used to connect Arduino Board with WSL2. Code can be found [here]()
+2. Tweaked FirmataExpress with minor tweaks to handle custom Sysex codes was used. Tweaked Sketch can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/FirmataExpress_Local.ino)
+3. [Pymata4](https://mryslab.github.io/pymata4/) was used to connect Arduino Board with WSL2. Code can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/ledstrip.py)
 
 ## Demo
 
