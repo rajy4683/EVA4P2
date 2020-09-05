@@ -15,7 +15,7 @@ Using Mediapipe's [Hand Tracking Pipeline](https://ai.googleblog.com/2019/08/on-
 At its core, Mediapipe uses a [TFlite Hand Landmark model](https://github.com/google/mediapipe/tree/master/mediapipe/models/hand_landmark.tflite) that can used independently.
 
 ### Schematic
-![Simple Flow diagram ](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/SwapResults.png)
+![Simple Flow diagram ](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/OpenPose.JPG)
 
 ## Open Pose with MediaPipe
 
