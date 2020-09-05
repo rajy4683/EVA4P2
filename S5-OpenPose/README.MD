@@ -1,37 +1,46 @@
-# Assignment-4: Face Recognition Pipeline on custom images + LFW 
+# Assignment-5: OpenPose based Hand Tracking and Gesture Recognition
 
 ## TOC
 
 1. [Overview](#overview)
-2. [Face Recognition Pipeline](#face-recognition-pipeline)
-    1. Loss Graph(#loss-graph)
-1. [Deployment](#deployment)
-1. [References](#references)
+2. [Open Pose with MediaPipe](#open-pose-with-mediapipe)
+3. [Arduino Interfacing](#arduino-interfacing)
+4. [Demo](#demo)
+5. [References](#references)
 
 ## Overview
 
-In this assignment, the objective is to create an face recognition pipeline on custom dataset of personalities. Following are the stages:
+In this assignment, the objective was to create a simple application using Gesture/Pose recognition and in course understand OpenPose and it's training methodology.
+Using Mediapipe's [Hand Tracking Pipeline](https://ai.googleblog.com/2019/08/on-device-real-time-hand-tracking-with.html), various ASL(American Sign Language) hand gestures are used to control Arduino+WS2812B LEDs
+At its core, Mediapipe uses a [TFlite Hand Landmark model](https://github.com/google/mediapipe/tree/master/mediapipe/models/hand_landmark.tflite) that can used independently.
 
-1. Dataset creation and merge with LFW dataset
-2. Extract and Align 160px images from the dataset and convert it for Face Recognition
-3. Fine-tune InceptionResNetv1 pre-trained on VggFace2 for 
+### Schematic
+![Simple Flow diagram ](https://github.com/rajy4683/EVA4P2/blob/master/S3-FaceAlignSwap/SwapResults.png)
 
-## Face Recognition Pipeline
+## Open Pose with MediaPipe
 
-Please refer this notebook for **[Face Recognition Pipeline](https://github.com/rajy4683/EVA4P2/blob/master/S4-FaceNet/P2S4_FaceNet.ipynb)**
+For end-to-end ML Pipeline MediaPipe's Hand Tracking was used with 2 modifications:
 
-Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4P2/tree/master/S4-FaceNet/s4-facedetection)**
+1. Hand Gesture and movement mapping from [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)    
+    Ulrich's Hand Gesture Recognition, uses HandLandMarkSubgraph to obtain normalized Landmarks and then based on "open state" i.e whether finger tip is above MCG decides overall gesture.
 
-### Loss Graph
+2. A simple ActionTrigger node that publishes to a local MQTT channel
+    This module uses the string of the selected Gesture and pushes it over an mqtt topic to a Mosquitto broker listening on localhost. 
 
+## Arduino Interfacing
 
-## Deployment
+1. Arduino UNO was used to drive a 1M(144 WS2812 LED Strip)
+2. Tweaked FirmataExpress with minor tweaks to handle custom Sysex codes was used. Tweaked Sketch can be found [here]()
+3. [Pymata4](https://mryslab.github.io/pymata4/) was used to connect Arduino Board with WSL2. Code can be found [here]()
 
-Please visit the following link to view/test the deployed models:
-https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com
+## Demo
+
+Please visit [this YouTube link](https://www.youtube.com/watch?v=kYNRz9D_o0o) for a demo. Feel free to ask for any further info or provide any feedback in the comments section
+
 
 ## References
 
 - EVA4 Course content
-- [Finetune a facial recognition classifier](https://towardsdatascience.com/finetune-a-facial-recognition-classifier-to-recognize-your-face-using-pytorch-d00a639d9a79)
-- [Tim Esler's Awesome FaceNet Repo](https://github.com/timesler/facenet-pytorch)
+- [Mediapipe Documentation](https://google.github.io/mediapipe/solutions/pose.html)
+- [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)
+- [PyMata4 documentation](https://mryslab.github.io/pymata4/) for Arduino control
