@@ -126,6 +126,10 @@ R1 GAN has been trained on this custom dataset:
 
 ![Samples](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANs/samples.png)
 
+## Latent Space Exploration
+
+![Samples](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANs/modeltransitions.png)
+
 ## Model Deployment
 
 This model is deployed on AWS Lambda and can be accessed at the below URL(Cars!Real or Fake? card):
