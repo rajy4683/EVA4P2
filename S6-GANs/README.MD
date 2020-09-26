@@ -1,47 +1,132 @@
-# Assignment-5: OpenPose based Hand Tracking and Gesture Recognition
+# Assignment-6: Generative Adversarial Networks
 
 ## TOC
 
 1. [Overview](#overview)
-2. [Open Pose with MediaPipe](#open-pose-with-mediapipe)
-3. [Arduino Interfacing](#arduino-interfacing)
-4. [Demo](#demo)
-5. [References](#references)
+2. [R1 GAN Model Summary](#r1-gan-model-summary)
+    1. [Generator](#generator)
+    1. [Discriminator](#discriminator)
+1. [Loss Graphs](#loss-graphs)
+1. [Samples](#samples)
+1. [References](#references)
 
 ## Overview
 
-In this assignment, the objective was to create a simple application using Gesture/Pose recognition and in course understand OpenPose and it's training methodology.
-Using Mediapipe's [Hand Tracking Pipeline](https://ai.googleblog.com/2019/08/on-device-real-time-hand-tracking-with.html), various ASL(American Sign Language) hand gestures are used to control Arduino+WS2812B LEDs
-At its core, Mediapipe uses a [TFlite Hand Landmark model](https://github.com/google/mediapipe/tree/master/mediapipe/models/hand_landmark.tflite) that can used independently.
+In this assignment, we train a GAN to generate cars available in the Indian sub-continent. The training set consists of approximately 2K images with either white or black backgrounds.
+R1 GAN has been trained on this custom dataset:
 
-### Schematic
+1. All images are re-scaled and center-cropped to 128x128 for usage with Discriminator network
+2. Generator network uses latent space with dimension of 256.
+3. The Generator network outputs a 128x128 images
+4. Discriminator uses [Softplus loss](https://pytorch.org/docs/stable/generated/torch.nn.Softplus.html) (basically a smoothed Relu Loss) with a Gradient Penalty. 
 
-![Simple Flow diagram ](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/OpenPose.JPG)
+## R1 GAN Model Summary
 
-## Open Pose with MediaPipe
+### Generator
 
-For end-to-end ML Pipeline MediaPipe's Hand Tracking was used with 2 modifications:
+           ----------------------------------------------------------------
+                    Layer (type)               Output Shape         Param #
+            ================================================================
+                        Linear-1             [-1, 1, 65536]      16,842,752
+                        Conv2d-2            [-1, 512, 8, 8]       4,719,104
+                          ReLU-3            [-1, 512, 8, 8]               0
+                        Conv2d-4            [-1, 512, 8, 8]       2,359,808
+                          ReLU-5            [-1, 512, 8, 8]               0
+                        Conv2d-6            [-1, 512, 8, 8]         524,800
+            R1GANResidualBlock-7            [-1, 512, 8, 8]               0
+                      Upsample-8          [-1, 512, 16, 16]               0
+                        Conv2d-9          [-1, 256, 16, 16]       1,179,904
+                         ReLU-10          [-1, 256, 16, 16]               0
+                       Conv2d-11          [-1, 256, 16, 16]         590,080
+                         ReLU-12          [-1, 256, 16, 16]               0
+                       Conv2d-13          [-1, 256, 16, 16]         131,328
+            R1GANResidualBlock-14          [-1, 256, 16, 16]               0
+                     Upsample-15          [-1, 256, 32, 32]               0
+                       Conv2d-16          [-1, 128, 32, 32]         295,040
+                         ReLU-17          [-1, 128, 32, 32]               0
+                       Conv2d-18          [-1, 128, 32, 32]         147,584
+                         ReLU-19          [-1, 128, 32, 32]               0
+                       Conv2d-20          [-1, 128, 32, 32]          32,896
+            R1GANResidualBlock-21          [-1, 128, 32, 32]               0
+                     Upsample-22          [-1, 128, 64, 64]               0
+                       Conv2d-23           [-1, 64, 64, 64]          73,792
+                         ReLU-24           [-1, 64, 64, 64]               0
+                       Conv2d-25           [-1, 64, 64, 64]          36,928
+                         ReLU-26           [-1, 64, 64, 64]               0
+                       Conv2d-27           [-1, 64, 64, 64]           8,256
+            R1GANResidualBlock-28           [-1, 64, 64, 64]               0
+                     Upsample-29         [-1, 64, 128, 128]               0
+                       Conv2d-30         [-1, 64, 128, 128]          36,928
+                         ReLU-31         [-1, 64, 128, 128]               0
+                       Conv2d-32         [-1, 64, 128, 128]          36,928
+                         ReLU-33         [-1, 64, 128, 128]               0
+            R1GANResidualBlock-34         [-1, 64, 128, 128]               0
+                       Conv2d-35          [-1, 3, 128, 128]           1,731
+            ================================================================
+            Total params: 27,017,859
+            Trainable params: 27,017,859
+            Non-trainable params: 0
+            ----------------------------------------------------------------
+            Input size (MB): 0.00
+            Forward/backward pass size (MB): 78.38
+            Params size (MB): 103.06
+            Estimated Total Size (MB): 181.44
 
-1. Hand Gesture and movement mapping from [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)
-    Ulrich's Hand Gesture Recognition, uses HandLandMarkSubgraph to obtain normalized Landmarks and then based on "open state" i.e whether finger tip is above MCG decides overall gesture.
+### Discriminator
 
-2. A simple ActionTrigger node that publishes to a local MQTT channel. Code can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/action-triggers/action-triggers.cc)
-    This module uses the string of the selected Gesture and pushes it over an mqtt topic to a Mosquitto broker listening on localhost.
+        ----------------------------------------------------------------
+                Layer (type)               Output Shape         Param #
+        ================================================================
+                    Conv2d-1         [-1, 64, 128, 128]           1,792
+                    Conv2d-2        [-1, 128, 128, 128]          73,856
+                      ReLU-3        [-1, 128, 128, 128]               0
+                    Conv2d-4        [-1, 128, 128, 128]         147,584
+                      ReLU-5        [-1, 128, 128, 128]               0
+                    Conv2d-6        [-1, 128, 128, 128]           8,320
+        R1GANResidualBlock-7        [-1, 128, 128, 128]               0
+                 AvgPool2d-8          [-1, 128, 64, 64]               0
+                    Conv2d-9          [-1, 256, 64, 64]         295,168
+                     ReLU-10          [-1, 256, 64, 64]               0
+                   Conv2d-11          [-1, 256, 64, 64]         590,080
+                     ReLU-12          [-1, 256, 64, 64]               0
+                   Conv2d-13          [-1, 256, 64, 64]          33,024
+        R1GANResidualBlock-14          [-1, 256, 64, 64]               0
+                AvgPool2d-15          [-1, 256, 32, 32]               0
+                   Conv2d-16          [-1, 512, 32, 32]       1,180,160
+                     ReLU-17          [-1, 512, 32, 32]               0
+                   Conv2d-18          [-1, 512, 32, 32]       2,359,808
+                     ReLU-19          [-1, 512, 32, 32]               0
+                   Conv2d-20          [-1, 512, 32, 32]         131,584
+        R1GANResidualBlock-21          [-1, 512, 32, 32]               0
+                AvgPool2d-22          [-1, 512, 16, 16]               0
+                   Conv2d-23         [-1, 1024, 16, 16]       4,719,616
+                     ReLU-24         [-1, 1024, 16, 16]               0
+                   Conv2d-25         [-1, 1024, 16, 16]       9,438,208
+                     ReLU-26         [-1, 1024, 16, 16]               0
+                   Conv2d-27         [-1, 1024, 16, 16]         525,312
+        R1GANResidualBlock-28         [-1, 1024, 16, 16]               0
+                AvgPool2d-29           [-1, 1024, 8, 8]               0
+                   Linear-30                    [-1, 1]          65,537
+        ================================================================
+        Total params: 19,570,049
+        Trainable params: 19,570,049
+        Non-trainable params: 0
+        ----------------------------------------------------------------
+        Input size (MB): 0.19
+        Forward/backward pass size (MB): 195.50
+        Params size (MB): 74.65
+        Estimated Total Size (MB): 270.34
+        ----------------------------------------------------------------    
 
-## Arduino Interfacing
+## Loss Graphs
 
-1. Arduino UNO was used to drive a 1M(144 WS2812 LED Strip)
-2. Tweaked FirmataExpress with minor tweaks to handle custom Sysex codes was used. Tweaked Sketch can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/FirmataExpress_Local.ino)
-3. [Pymata4](https://mryslab.github.io/pymata4/) was used to connect Arduino Board with WSL2. Code can be found [here](https://github.com/rajy4683/EVA4P2/blob/master/S5-OpenPose/ledstrip.py)
+![Loss Graphs](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANS/losses.png)
 
-## Demo
+## Samples
 
-Please visit [this YouTube link](https://www.youtube.com/watch?v=kYNRz9D_o0o) for a demo. Feel free to ask for any further info or provide any feedback in the comments section
-
+![Samples](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANS/samples.png)
 
 ## References
 
 - EVA4 Course content
-- [Mediapipe Documentation](https://google.github.io/mediapipe/solutions/pose.html)
-- [Ulrich Tiofack's Gist](https://gist.github.com/TheJLifeX/99cdf4823e2b7867c0e94fabc660c58b)
-- [PyMata4 documentation](https://mryslab.github.io/pymata4/) for Arduino control
+- [Jinhyeok Yang's R1 GAN models](https://github.com/Yangyangii/GAN-Tutorial/blob/master/CelebA/R1GAN.ipynb)
