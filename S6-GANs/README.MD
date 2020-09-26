@@ -126,6 +126,15 @@ R1 GAN has been trained on this custom dataset:
 
 ![Samples](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANS/samples.png)
 
+## Model Deployment
+
+This model is deployed on AWS Lambda and can be accessed at the below URL(Cars!Real or Fake? card):
+
+http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/
+
+Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
+Hence please retry clicking on the "Upload"/"Submit" Buttons
+
 ## References
 
 - EVA4 Course content
