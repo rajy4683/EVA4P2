@@ -120,7 +120,7 @@ R1 GAN has been trained on this custom dataset:
 
 ## Loss Graphs
 
-![Loss Graphs](https://github.com/rajy4683/EVA4P2/tree/master/S6-GANs/losses.png)
+![Loss Graphs](https://github.com/rajy4683/EVA4P2/blob/master/S6-GANs/losses.png)
 
 ## Samples
 
