@@ -1,4 +1,4 @@
-# Assignment-6: Generative Adversarial Networks
+# Assignment-8: Super Resolution and Neural Style Transfer
 
 ## TOC
 
@@ -30,7 +30,11 @@ Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2
 
 ## Neural Style Transfer
 
+16 different style images were used to train on COCO Val-2017 dataset.  
+
 Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/EVA4P2_NeuralStyleTransfer.ipynb)
+
+The models are deployed on AWS and can be accessed from the below [pages](#model-deployment).
 
 ## Samples for Neural Style Transfer
 
