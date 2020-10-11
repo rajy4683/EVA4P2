@@ -41,6 +41,8 @@ The models are deployed on AWS and can be accessed from the below [pages](#model
 ![Samples 1](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/nstsamples/sample1.JPG)
 ![Samples 2](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/nstsamples/sample2.JPG)
 ![Samples 3](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/nstsamples/sample3.JPG)
+![Samples 4](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/nstsamples/sample4.JPG)
+![Samples 5](https://github.com/rajy4683/EVA4P2/blob/master/S8-SuperResNST/nstsamples/sample5.JPG)
 
 ## Model Deployment
 
