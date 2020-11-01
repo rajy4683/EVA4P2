@@ -1,4 +1,4 @@
-# Assignment-9: Sentiment Analysis and Neural Embeddings
+# Assignment-11: Attention mechanism and NMT
 
 ## TOC
 
@@ -9,29 +9,33 @@
 
 ## Overview
 
-This assignment is targeted to understand Neural Embeddings - the base layer from where the NLP journey starts.
-The target is to train an NLP model to predict the sentiment of a movie review.
+This assignment is targeted to understand and implement Attention mechanism in Encoder/Decoder networks.
+The original paper on [Bahdanau attention](https://arxiv.org/pdf/1409.0473.pdf).
+The original notebook which forms the basis for this notebook can be found [here](https://bastings.github.io/annotated_encoder_decoder/)
 
-## Sentiment Analysis
+## Seq2Seq Translation with Bahdnau Attention:
 
-Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2/blob/master/S9-SentimentAnalysis/EVA4P2_SentimentAnalysis.ipynb)
+The model consists of following elements:
+
+1. Encoder Class: Implemented as a bi-directional GRU
+1. Decoder Class: Implemented as a conditional GRU, where the initial hidden state of the decoder is conditioned on the encoder's final vector
+1. Attention Mechanism: An additive attention is used at every time-step of the decoder.  
+1. Embeddings: PyTorch's nn.Embedding class is used to derive embeddings from the vocabulary.
+
+PyTorch's IWSLT German-English Translation dataset has been used to train the model.
+Adam optimizer with default settings (β1=0.9, β2=0.999 and ϵ=10−8). Cross-Entropy loss is used as the cost-function.
+
+Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2/blob/master/S11-Attention/EVA4P2S11_Attention.ipynb)
+
+### TorchScript handling:
+
+TorchScript doesn't allow to invokde sub-modules once top level module has been traced. 
+The model used in this assignment has a top-level EncoderDecoder class encompassing the Encoder and Decoder objects.
+To handle this situation during tracing all the classes are separtely traced i.e Encoder, Decoder, Generator(Final FC Layer) and the Embedding Layers
 
 ## Model Deployment
 
-Given the size restrictions on Lambda the overall deployment is split into two Lambda applications:
-
-1. A [Spacy Tokenizer](https://spacy.io/api/tokenizer) that can return an array of tokens given an English sentence.
-
-    ```curl
-        curl -X POST \
-          https://n6axj3jn08.execute-api.ap-south-1.amazonaws.com/dev/classify \
-          -H 'cache-control: no-cache' \
-          -H 'content-type: application/json' \
-          -H 'postman-token: fa591a88-e17e-013a-49e6-c2747cf2e25f' \
-          -d '{"text":"Movie sucks"}'P
-    ```
-
-2. The main deployment model that invokes Spacy tokens and then finally runs the NLP model and responds with a sentiment score between 0(Negative) and 1(Positive)  
+The main deployment model that invokes Spacy tokens and then finally runs the NLP model and responds with a sentiment score between 0(Negative) and 1(Positive)  
 
     ```curl
         curl -X POST \
@@ -39,12 +43,11 @@ Given the size restrictions on Lambda the overall deployment is split into two L
           -H 'cache-control: no-cache' \
           -H 'content-type: application/json' \
           -H 'postman-token: 36448107-0684-54d6-5928-4cf6ced2cbf9' \
-          -d '{"text":"Movie sucks"}'
+          -d '{"text":"Neuronale maschinelle Übersetzung macht absoluten Spaß"}'
     ```
 
-Spacy model is deployed on AWS Lambda and can be accessed at the below URL:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/superres
+http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/attention
 
 Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
 Hence please retry clicking on the "Upload"/"Submit" Buttons
@@ -52,4 +55,5 @@ Hence please retry clicking on the "Upload"/"Submit" Buttons
 ## References
 
 - EVA4 Course content
-- [Jinhyeok Yang's R1 GAN models](https://github.com/Yangyangii/GAN-Tutorial/blob/master/CelebA/R1GAN.ipynb)
+- [The Annotated Encoder Decoder](https://bastings.github.io/annotated_encoder_decoder/)
+- [DEPLOYING A SEQ2SEQ MODEL WITH TORCHSCRIPT](https://pytorch.org/tutorials/beginner/deploy_seq2seq_hybrid_frontend_tutorial.html)
