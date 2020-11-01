@@ -14,7 +14,7 @@ This assignment is targeted to understand and implement Attention mechanism in E
 The original paper on [Bahdanau attention](https://arxiv.org/pdf/1409.0473.pdf).
 The original notebook which forms the basis for this notebook can be found [here](https://bastings.github.io/annotated_encoder_decoder/)
 
-## Seq2Seq Translation with Bahdnau Attention:
+## Seq2Seq Translation with Bahdnau Attention
 
 The model consists of following elements:
 
@@ -28,7 +28,7 @@ Adam optimizer with default settings (β1=0.9, β2=0.999 and ϵ=10−8). Cross-E
 
 Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2/blob/master/S11-Attention/EVA4P2S11_Attention.ipynb)
 
-### TorchScript handling:
+### TorchScript handling
 
 TorchScript doesn't allow to invokde sub-modules once top level module has been traced. 
 The model used in this assignment has a top-level EncoderDecoder class encompassing the Encoder and Decoder objects.
@@ -47,11 +47,12 @@ The main deployment model that invokes Spacy tokens and then finally runs the NL
           -d '{"text":"Neuronale maschinelle Übersetzung macht absoluten Spaß"}'
     ```
 
+https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/attention
+Card Widget: "German to English Translator"
 
-Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
-Hence please retry clicking on the "Upload"/"Submit" Buttons
+Please note that the card widgets on the above page interacts with AWS LAMBDA backend and hence suffers from a cold start issue.
+So please retry by clicking on the "Upload"/"Submit" Buttons
 
 ## References
 
