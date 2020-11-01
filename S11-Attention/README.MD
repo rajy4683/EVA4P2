@@ -3,9 +3,10 @@
 ## TOC
 
 1. [Overview](#overview)
-2. [Sentiment Analysis](#sentiment-analysis)
-3. [Model Deployment](#model-deployment)
-4. [References](#references)
+2. [Seq2Seq Translation with Bahdnau Attention](#seq2seq-translation-with-bahndau-attention)
+    1. [TorchScript Handling](#torchscript-handling)
+1. [Model Deployment](#model-deployment)
+1. [References](#references)
 
 ## Overview
 
@@ -39,7 +40,7 @@ The main deployment model that invokes Spacy tokens and then finally runs the NL
 
     ```curl
         curl -X POST \
-          https://n6axj3jn08.execute-api.ap-south-1.amazonaws.com/dev/classify \
+          https://qiyyo3c4xa.execute-api.ap-south-1.amazonaws.com/dev/classify \
           -H 'cache-control: no-cache' \
           -H 'content-type: application/json' \
           -H 'postman-token: 36448107-0684-54d6-5928-4cf6ced2cbf9' \
