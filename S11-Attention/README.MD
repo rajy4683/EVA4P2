@@ -47,7 +47,7 @@ The main deployment model that invokes Spacy tokens and then finally runs the NL
           -d '{"text":"Neuronale maschinelle Übersetzung macht absoluten Spaß"}'
     ```
 
-https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
+http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
 
 Card Widget: "German to English Translator"
 
