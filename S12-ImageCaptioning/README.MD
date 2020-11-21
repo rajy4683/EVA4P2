@@ -1,4 +1,4 @@
-# Assignment-11: Attention mechanism and NMT
+# Assignment-12: Image Captioning
 
 ## TOC
 
