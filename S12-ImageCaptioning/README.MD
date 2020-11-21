@@ -4,8 +4,8 @@
 
 1. [Overview](#overview)
 2. [Image Captioning with SANT](#image-captioning-with-sant)
-1. [Model Deployment](#model-deployment)
-1. [References](#references)
+3. [Model Deployment](#model-deployment)
+4. [References](#references)
 
 ## Overview
 
@@ -13,7 +13,7 @@ This assignment is targeted to understand and implement Show, Attend and Tell Pa
 The original paper can be found here **[Show, Attend, and Tell](https://arxiv.org/abs/1502.03044)**
 Please refer to [this repo](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning) for complete details and explanations.
 
-## Seq2Seq Translation with Bahdnau Attention
+## Image Captioning with SANT
 
 The model consists of following elements:
 
