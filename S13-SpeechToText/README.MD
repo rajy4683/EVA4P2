@@ -46,7 +46,7 @@ The trained model is deployed on AWS Lambda and can be accessed as below:
     ```
 or on this page:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
+https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
 
 Card Widget: "Speech to Text"
 
