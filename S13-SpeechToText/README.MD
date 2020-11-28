@@ -14,7 +14,7 @@ The core model is based on Deep Speech2 architecture consisting of Residual CNN 
 The ResNet layers are used for extracting audio features, which the RNN layers are responsible for predicting the temporal relation and making prediction for each frame of audio based on the data available till that point in time.
 The code and inputs are inspired from this [blog](https://www.assemblyai.com/blog/end-to-end-speech-recognition-pytorch)
 
-## Image Captioning with SANT
+## Speech Recognition Pipeline
 
 For training, a subset of [LibriSpeech dataset](http://www.openslr.org/12/) dataset has been used. The data is derived from read audiobooks from the LibriVox project, and has been carefully segmented and aligned.
 The link to the original paper can be found [here](http://www.danielpovey.com/files/2015_icassp_librispeech.pdf)
