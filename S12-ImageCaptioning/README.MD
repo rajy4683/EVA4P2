@@ -28,7 +28,7 @@ Training code can be found in this [notebook](https://github.com/rajy4683/EVA4P2
 
 ## Model Deployment
 
-The main deployment model that invokes Spacy tokens and then finally runs the NLP model and responds with a sentiment score between 0(Negative) and 1(Positive)  
+The main deployment model can be accesed as below:
 
     ```curl
 		curl -X POST \
@@ -38,6 +38,7 @@ The main deployment model that invokes Spacy tokens and then finally runs the NL
   				-H 'postman-token: 862f22ee-dd51-c0e1-3143-9da4495a63b9' \
   				-F 'file=@flickr30k_images/3826378639.jpg'
     ```
+A live demo is also available on the below page:
 
 http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
 
