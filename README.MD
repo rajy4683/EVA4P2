@@ -1,6 +1,6 @@
 # EVA4 Phase 2 Repository
  
- This Repository contains content developed as part of EVA4 Phase 2 Program.
+ This Repository contains content developed as part of [EVA4 Phase 2 Program](https://theschoolof.ai/#programs).
  
  Below are the links for training notebooks. 
  
