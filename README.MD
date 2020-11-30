@@ -1,6 +1,10 @@
 # EVA4 Phase 2 Repository
  
- This Repository contains all the assignments submitted as part of EVA4 Phase 2. Please visit this **[website](https://rekogwebservice.tk/)** for demo
+ This Repository contains content developed as part of EVA4 Phase 2 Program.
+ 
+ Below are the links for training notebooks. 
+ 
+ Please visit my **[website](https://rekogwebservice.tk/)** for demo of these models in action.
 
 ## Assignment List
 
