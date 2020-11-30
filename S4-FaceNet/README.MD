@@ -28,7 +28,7 @@ Deployment Scripts are present in **[this repo](https://github.com/rajy4683/EVA4
 ## Deployment
 
 Please visit the following link to view/test the deployed models:
-https://rekogwebservice2.s3-website.ap-south-1.amazonaws.com
+https://rekogwebservice.tk/
 
 ## References
 

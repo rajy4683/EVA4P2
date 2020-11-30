@@ -40,7 +40,7 @@ The main deployment model can be accesed as below:
     ```
 A live demo is also available on the below page:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/ 
+https://rekogwebservice.tk/
 
 Card Widget: "Caption This!"
 

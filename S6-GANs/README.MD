@@ -134,7 +134,10 @@ R1 GAN has been trained on this custom dataset:
 
 This model is deployed on AWS Lambda and can be accessed at the below URL(Cars!Real or Fake? card):
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/
+https://rekogwebservice.tk/
+
+Card Widget:
+"Cars! Real or Fake?"
 
 Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
 Hence please retry clicking on the "Upload"/"Submit" Buttons

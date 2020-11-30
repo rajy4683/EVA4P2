@@ -48,11 +48,11 @@ The models are deployed on AWS and can be accessed from the below [pages](#model
 
 Super Resolution model is deployed on AWS Lambda and can be accessed at the below URL:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/superres
+https://rekogwebservice.tk/superres
 
 Neural Style Transfer link is deployed below:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/styletransfer
+https://rekogwebservice.tk/styletransfer
 
 Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
 Hence please retry clicking on the "Upload"/"Submit" Buttons

@@ -38,6 +38,8 @@ For end-to-end ML Pipeline MediaPipe's Hand Tracking was used with 2 modificatio
 
 Please visit [this YouTube link](https://www.youtube.com/watch?v=kYNRz9D_o0o) for a demo. Feel free to ask for any further info or provide any feedback in the comments section
 
+You can find the link on my [webpage](https://rekogwebservice.tk/) Widget: "Openpose Demo"
+
 
 ## References
 

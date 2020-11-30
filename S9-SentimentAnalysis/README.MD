@@ -44,7 +44,10 @@ Given the size restrictions on Lambda the overall deployment is split into two L
 
 Spacy model is deployed on AWS Lambda and can be accessed at the below URL:
 
-http://rekogwebservice2.s3-website.ap-south-1.amazonaws.com/superres
+https://rekogwebservice.tk/
+
+Widget Name:
+Movie Review Sentiment Analyzer
 
 Please note that the card widgets on the above page interact with AWS LAMBDA backend and suffer from a cold start issue.
 Hence please retry clicking on the "Upload"/"Submit" Buttons
